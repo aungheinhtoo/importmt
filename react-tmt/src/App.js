@@ -19,27 +19,28 @@ import Trail from './components/Trail';
 import Home from "./components/pages/Home";
 import Register from "./components/pages/Register";
 import NotFoundPage from "./components/pages/404";
+import AuthState from './context/AuthState';
 
 class App extends React.Component {
   render(){
     return (
-      <Router>
-        <div className="App">
-            <Navbar />
-        </div>
-  
-        <div>
-          <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route exact path="/register" component={Register}/>
-            <Route exact path="/404" component={NotFoundPage}/>
-            <Redirect to="/404"/>
+      <AuthState>
+        <Router>
+          <div className="App">
+              <Navbar />
+          </div>
 
-          </Switch>
-        </div>
-      </Router>
+          <div>
+            <Switch>
+              <Route exact path="/" component={Home}/>
+              <Route exact path="/register" component={Register}/>
+              <Route exact path="/404" component={NotFoundPage}/>
+              <Redirect to="/404"/>
 
-
+            </Switch>
+          </div>
+        </Router>
+      </AuthState>
 
     );
   }
