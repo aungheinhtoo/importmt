@@ -31,10 +31,10 @@ const AuthState = props => {
         } catch (err) {
           dispatch({
             type: "REGISTER_FAIL",
-            payload: err.response.data.msg
+            payload: err.response.data
           });
 
-          console.log(err.response.data.msg);
+          alert(err.response.data);
 
         }
       };

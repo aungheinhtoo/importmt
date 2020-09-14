@@ -23,23 +23,25 @@ const Register = () => {
 
 
         var bool_accessor = null;
-        var accessor_name = null;
+        var accessor_name = "null";
 
         if (data.domain === "User"){
-            bool_accessor = false;
+            bool_accessor = "false";
+            accessor_name = data.accessor
         }
         else {
-            bool_accessor = true;
-            accessor_name = data.accessor
+            bool_accessor = "true";
         }
 
         // Registration for user
         const d = {
-            user_id : data.nric,
-            user_name : data.name,
-            user_password : data.password,
-            is_accessor : bool_accessor,
-            accessor : accessor_name
+            "user_id" : data.nric,
+            "user_name" : data.name,
+            "user_password" : data.password,
+            "is_accessor" : bool_accessor,
+            "accessor": accessor_name,
+        //    "user_email": "aqwer@qwewqe.com"
+            "user_email": "user@email.com"
         }
         // alert(JSON.stringify(d));
         register_(d);

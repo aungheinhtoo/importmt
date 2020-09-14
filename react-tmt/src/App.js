@@ -35,7 +35,7 @@ class App extends React.Component {
               <Route exact path="/" component={Home}/>
               <Route exact path="/register" component={Register}/>
               <Route exact path="/404" component={NotFoundPage}/>
-              <Redirect to="/404"/>
+              <Redirect to="/"/>
 
             </Switch>
           </div>
