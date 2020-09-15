@@ -20,6 +20,7 @@ import Home from "./components/pages/Home";
 import Register from "./components/pages/Register";
 import NotFoundPage from "./components/pages/404";
 import AuthState from './context/AuthState';
+import Login from './components/pages/Login';
 
 class App extends React.Component {
   render(){
@@ -35,6 +36,7 @@ class App extends React.Component {
               <Route exact path="/" component={Home}/>
               <Route exact path="/register" component={Register}/>
               <Route exact path="/404" component={NotFoundPage}/>
+              <Route exact path="/login" component={Login}/>
               <Redirect to="/"/>
 
             </Switch>

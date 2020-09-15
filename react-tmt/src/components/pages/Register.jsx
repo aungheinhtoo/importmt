@@ -8,7 +8,7 @@ import "./styles.css";
 
 
 const Register = () => {
-    const { register, handleSubmit, errors} = useForm();
+    const { register, handleSubmit,getValues, errors} = useForm();
     
 
     const authContext = useContext(AuthContext)
@@ -62,10 +62,23 @@ const Register = () => {
             <input name="nric" ref={register({required : true})}/>
             {errors.nric && (<p>This is required.</p>)}
 
-            <label>Password</label>
+            <label>Password: </label>
             <input name="password" type= "password" ref={register({required : true, minLength: 6})}/>
             {errors.password && errors.password.type === "required" && (<p>This is required.</p>)}
             {errors.password && errors.password.type === "minLength" && (<p>This field required a min length of 6.</p>)}
+
+
+            <label>Confirm Password: </label>
+            <input name="cfm_password" type= "password" ref={register(
+                {
+                    validate: {
+                        passwordEqual: value => (value === getValues().password) || "Passwords are mismatch."
+                    },
+                    required : true
+                })}/>
+            {errors.cfm_password && errors.cfm_password.type === "required" && (<p>This is required.</p>)}
+            {errors.cfm_password && <p>{errors.cfm_password.message}</p>}
+
 
             <label>Domain:</label>
             <select name="domain" ref={register({required : true})} >
