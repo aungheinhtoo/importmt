@@ -51,43 +51,43 @@ const Register = () => {
     };
 
     return(
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <h1>Sign Up</h1>
+        <form className="form" onSubmit={handleSubmit(onSubmit)}>
+            <h1 className="form_h1" >Sign Up</h1>
             
-            <label>Full Name:</label>
-            <input name="name" ref={register({required : true})}/>
+            <label className="form_label" >Full Name:</label>
+            <input className="form_input" name="name" ref={register({required : true})}/>
             {errors.name && (<p>This is required.</p>)}
 
-            <label>NRIC (Username):</label>
-            <input name="nric" ref={register({required : true})}/>
+            <label className="form_label">NRIC (Username):</label>
+            <input className="form_input" name="nric" ref={register({required : true})}/>
             {errors.nric && (<p>This is required.</p>)}
 
-            <label>Password: </label>
-            <input name="password" type= "password" ref={register({required : true, minLength: 6})}/>
-            {errors.password && errors.password.type === "required" && (<p>This is required.</p>)}
-            {errors.password && errors.password.type === "minLength" && (<p>This field required a min length of 6.</p>)}
+            <label className="form_label">Password: </label>
+            <input className="form_input" name="password" type= "password" ref={register({required : true, minLength: 6})}/>
+            {errors.password && errors.password.type === "required" && (<p className="form_p">This is required.</p>)}
+            {errors.password && errors.password.type === "minLength" && (<p className="form_p">This field required a min length of 6.</p>)}
 
 
-            <label>Confirm Password: </label>
-            <input name="cfm_password" type= "password" ref={register(
+            <label className="form_label">Confirm Password: </label>
+            <input className="form_input" name="cfm_password" type= "password" ref={register(
                 {
                     validate: {
                         passwordEqual: value => (value === getValues().password) || "Passwords are mismatch."
                     },
                     required : true
                 })}/>
-            {errors.cfm_password && errors.cfm_password.type === "required" && (<p>This is required.</p>)}
-            {errors.cfm_password && <p>{errors.cfm_password.message}</p>}
+            {errors.cfm_password && errors.cfm_password.type === "required" && (<p className="form_p">This is required.</p>)}
+            {errors.cfm_password && <p className="form_p">{errors.cfm_password.message}</p>}
 
 
-            <label>Domain:</label>
+            <label className="form_label">Domain:</label>
             <select name="domain" ref={register({required : true})} >
                 <option>Select ...</option>
                 <option>User</option>
                 <option>Accessor</option>
             </select>
 
-            <label>Assigned Accessor: </label>
+            <label className="form_label">Assigned Accessor: </label>
             <select name="accessor" ref={register()}>
                 {countryData.map((item, index) => {
                     return <option key={item.name}> {item.value} </option>;
@@ -99,7 +99,7 @@ const Register = () => {
             <textarea name="assigned_users"  ref={register()}/>
             <b id="accessor_part">If you are registering as a User, skip this part.</b> */}
 
-            <input type="submit" ref={register}/>
+            <input className="form_input" type="submit" ref={register}/>
 
         </form>
     )

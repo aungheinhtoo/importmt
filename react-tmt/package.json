@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "@orcatech/react-neuropsych-trails": "0.0.9",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -16,7 +17,8 @@
     "react-hook-form": "^6.7.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.4.3",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "w3-css": "^4.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

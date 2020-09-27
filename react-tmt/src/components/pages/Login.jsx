@@ -2,6 +2,7 @@ import React, {useContext, useEffect} from "react";
 import { useForm } from "react-hook-form";
 
 import AuthContext from "../../context/authContext";
+import "./styles.css";
 
 const Login = props => {
     const { register, handleSubmit, errors} = useForm();
@@ -34,16 +35,16 @@ const Login = props => {
 
 
     return(
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <h1> Sign In </h1>
+        <form className="form" onSubmit={handleSubmit(onSubmit)}>
+            <h1 className="form_h1"> Sign In </h1>
 
             <label>NRIC: </label>
-            <input name="nric" ref={register({required : true})}/>
-            {errors.nric && (<p>This field is required.</p>)}
+            <input className="form_input" name="nric" ref={register({required : true})}/>
+            {errors.nric && (<p className="form_p">This field is required.</p>)}
 
             <label>Password</label>
-            <input name="password" type= "password" ref={register({required : true, minLength: 6})}/>
-            {errors.password && errors.password.type === "required" && (<p>This is required.</p>)}
+            <input className="form_input" name="password" type= "password" ref={register({required : true, minLength: 6})}/>
+            {errors.password && errors.password.type === "required" && (<p className="form_p">This is required.</p>)}
 
             <label>Domain:</label>
             <select name="domain" ref={register({required : true})} >
@@ -52,7 +53,7 @@ const Login = props => {
                 <option>Accessor</option>
             </select>
 
-            <input type="submit" value="Login" ref={register}/>
+            <input className="form_input" type="submit" value="Login" ref={register}/>
 
 
         </form>

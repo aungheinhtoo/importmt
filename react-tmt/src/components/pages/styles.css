@@ -1,9 +1,9 @@
-form {
+.form {
     max-width: 500px;
     margin: 0 auto;
 }
 
-h1 {
+.form_h1 {
     font-weight: 100;
     color: black;
     text-align: center;
@@ -11,16 +11,16 @@ h1 {
     border-bottom: 1px solid rgb(79, 98, 148);
   }
 
-  p {
+.form_p {
     color: #bf1650;
   }
 
-  p::before {
+.form_p::before {
     display: inline;
     content: "⚠ ";
   }
 
- textarea, input {
+.form_input {
   display: block;
   box-sizing: border-box;
   width: 100%;
@@ -28,11 +28,11 @@ h1 {
   border: 1px solid black;
   padding: 10px 15px;
   margin-bottom: 10px;
-  font-size: 14px;
+  font-size: 14px;    
 }
 
 
-label {
+.form_label {
     line-height: 2;
     text-align: left;
     display: block;
@@ -79,4 +79,10 @@ b{
 
 #accessor_part{
   padding: 10px 0px;
+}
+
+
+
+.home_p{
+  
 }
