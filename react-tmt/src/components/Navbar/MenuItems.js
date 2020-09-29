@@ -13,6 +13,11 @@ export const MenuItems = [
         title: 'Register',
         url: '/register',
         cName: 'nav-links'
+    },
+    {
+        title: 'Play',
+        url: '/gameChoice',
+        cName: 'nav-links'
     }
 
 

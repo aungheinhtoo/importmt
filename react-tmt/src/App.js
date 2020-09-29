@@ -14,6 +14,7 @@ import
 //Components
 import Navbar from "./components/Navbar/Navbar";
 import Trail from './components/Trail';
+import Game from "./components/pages/Game";
 
 //Pages
 import Home from "./components/pages/Home";
@@ -21,11 +22,14 @@ import Register from "./components/pages/Register";
 import NotFoundPage from "./components/pages/404";
 import AuthState from './context/AuthState';
 import Login from './components/pages/Login';
+import gameChoice from "./components/pages/GameChoice";
+import GameState from "./context/game/GameState";
 
 class App extends React.Component {
   render(){
     return (
       <AuthState>
+        <GameState>
         <Router>
           <div className="App">
               <Navbar />
@@ -37,11 +41,14 @@ class App extends React.Component {
               <Route exact path="/register" component={Register}/>
               <Route exact path="/404" component={NotFoundPage}/>
               <Route exact path="/login" component={Login}/>
+              <Route exact path="/game" component = {Game}/>
+              <Route exact path = "/gameChoice" component = {gameChoice}/>
               <Redirect to="/"/>
 
             </Switch>
           </div>
         </Router>
+        </GameState>
       </AuthState>
 
     );
