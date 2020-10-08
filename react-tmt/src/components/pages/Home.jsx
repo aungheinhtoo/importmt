@@ -39,9 +39,33 @@ const Home = () => {
             >
                     <h2>About Us</h2>
                     <p className="w3-justify w3-center">
-                        We are a team of 6 who aims to provide TMT web services to the larger community. We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
-                        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Formed by 7 individuals who wanted to support the medical industry with their programming skills, importTMT was created as their first foray into the world of Telemedicine.<br/>
+                        importTMT is a robust and reliable implementation of the Trail Making Test (TMT) on an online platform, designed specifically for quick, easy access to a Trail Making Test anytime.<br/>
+                        Our TMT is available for use for users in the educational and medical industry. Also, our TMT is automatically generated for you so you don't need to create your own test, making for a quick, reliable experience.<br/>
+                    </p>
+            </div>
+            <div 
+                className="w3-container w3-content w3-center w3-padding-32"
+                style={{background: "linear-gradient(90deg, rgb(110, 94, 254) 0%, rgba(73,63,252,1) 100%)", color : "white"}}
+            >
+                    <h2>Tutorial</h2>
+                    <p className="w3-justify w3-center">
+                        Never tried a TMT before? This section has you covered!<br/>
+                        There are 2 difficulties available; the 2nd difficulty level is locked until you're sufficiently acquainted with the 1st difficulty level.<br/>
+
+                        The basics of a TMT are very simple:<br/>
+                        1. Click on the circle labelled "1" and hold the button down.<br/>
+                        2. Drag the line that appears to the next circle.<br/>
+                        3. Repear step 2 and 3 until complete.<br/>
+
+                        On the 1st difficulty, you'll need to drag in ascending order of numbers (eg. 1, 2, 3, 4,...).<br/>
+                        However, the 2nd difficulty requires you to drag from a number to its corresponding letter before increasing in number (eg. 1, a, 2, b, ...)<br/>
+
+                        You will be graded on 2 things:<br/>
+                        1. Accuracy. The number of mistakes that you make will be recorded to help you improve in further attempts.<br/>
+                        2. Time taken. You will also be graded as to how fast you can complete the test.<br/>
+
+                        Enjoy your TMT experience! <br/>
                     </p>
             </div>
             <div className="w3-container w3-content w3-center w3-padding-32">
