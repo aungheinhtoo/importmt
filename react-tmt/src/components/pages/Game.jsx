@@ -2,15 +2,24 @@ import React, { useContext, useEffect, Fragment } from 'react';
 import background from '../Game/background.jpg';
 
 import GameNav from '../../components/layout/GameNav';
+import ResultContext from '../../context/results/resultsContext';
 import Button from '../Game/Button';
+import ResultItem from '../results/ResultItem';
+import Spinner from '../layout/Spinner';
 
 import './Game.css';
 
 import GameContext from '../../context/game/gameContext';
+import {Link} from "react-router-dom";
+import AuthContext from "../../context/authContext";
 
-const Game = () => {
+const letters = 'ABCDEFGHIJKLMNPQRSTUVWXYZ';
+
+const Game = (props) => {
     const gameContext = useContext(GameContext);
+    const gameLevel = props.location.state.gameLevel;
     console.log(gameContext);
+    console.log("Game Level:", gameLevel);
     const {
         nodes,
         height,
@@ -23,8 +32,19 @@ const Game = () => {
         startGame
     } = gameContext;
 
+    const authContext = useContext(AuthContext);
+    const { stopLoading, loadUser, isAuthenticated } = authContext;
+
+    const resultContext = useContext(ResultContext);
+    const { results, addResult, loading, getResults, user } = resultContext;
+
+
     useEffect(() => {
+        if (end && rawTimings.length === nodes.length) {
+            addResult(rawTimings, numErrors, isAuthenticated, gameLevel, user);
+        }
         initGame();
+
         // eslint-disable-next-line
     }, [end]);
 
@@ -33,7 +53,7 @@ const Game = () => {
             <img src={background} alt="empty" width={width} height={height} />
             <svg viewBox={`0 0 ${width} ${height}`}>
                 {nodes.map((node, i) => (
-                    <Button key={i} i={i}></Button>
+                    <Button key={i} i={i} text={(gameLevel==1) ? i+1 : i%2==0 ? (i/2)+1 : letters[(i-1)/2]}></Button>
                 ))}
             </svg>
         </div>
@@ -42,13 +62,86 @@ const Game = () => {
     const endscreen = (
         <Fragment>
             <div
+                className="jumbotron text-center jumbotron-fluid"
+                style={{ backgroundColor: '#f0f8ff' }}
+            >
+                <div className="container">
+                    <h1>Trail Making Test</h1>
+                    <h6 style={{ color: '#777' }}>Your Result</h6>
+                </div>
+            </div>
+            <div className="row">
+                <div
+                    className="col-sm-4 text-center"
+                    style={{
+                        backgroundColor: '#fff',
+                        paddingTop: '16px',
+                        paddingBottom: '32px'
+                    }}
+                >
+                    <strong>
+                        Average Completion Time :<br></br>29s (29000ms)
+                    </strong>
+                </div>
+                <div
+                    className="col-sm-4 text-center"
+                    style={{
+                        backgroundColor: '#fff',
+                        paddingTop: '16px',
+                        paddingBottom: '32px'
+                    }}
+                >
+                    <strong>
+                        Deficiency is suspected :<br></br>>78s (78000ms)
+                    </strong>
+                </div>
+                <div
+                    className="col-sm-4 text-center"
+                    style={{
+                        backgroundColor: '#fff',
+                        paddingTop: '16px',
+                        paddingBottom: '32px'
+                    }}
+                >
+                    <strong>
+                        Most common completion timing :<br></br>90s (90000ms)
+                    </strong>
+                </div>
+            </div>
+            {/*/!* impossible it happens but required to stop code from breaking *!/*/}
+            {/*{results !== null && !loading ? (*/}
+            {/*    <Fragment>*/}
+            {/*        {results.length > 0 ? (*/}
+            {/*            <ResultItem*/}
+            {/*                result={results[results.length - 1]}*/}
+            {/*                showDelete={false}*/}
+            {/*            ></ResultItem>*/}
+            {/*        ) : null}*/}
+            {/*    </Fragment>*/}
+            {/*) : (*/}
+            {/*    <Spinner />*/}
+            {/*)}*/}
+            <div
                 className="container text-center"
                 style={{ paddingTop: '16px', paddingBottom: '16px' }}
             >
+                {results !== null && !loading ? (
+                    <Fragment>
+                        {results.length > 0 ? (
+                            <ResultItem
+                                result={results[results.length - 1]}
+                                showDelete={false}
+                            ></ResultItem>
+                        ) : null}
+                    </Fragment>
+                ) : (
+                    <Spinner />
+                )}
                 <button type="button" className="btn btn-success" onClick={startGame}>
                     Try Again
                 </button>
             </div>
+
         </Fragment>
     );
 

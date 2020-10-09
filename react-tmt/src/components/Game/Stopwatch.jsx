@@ -2,6 +2,7 @@ import * as React from 'react';
 import ReactStopwatch from 'react-stopwatch';
 
 const Stopwatch = () => (
+    // TODO: Handle Unmount
     <ReactStopwatch
         seconds={0}
         minutes={0}
