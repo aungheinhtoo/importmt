@@ -2,7 +2,7 @@ import React, { Fragment, useContext, useEffect } from 'react';
 
 import GameContext from '../../context/game/gameContext';
 
-const Button = ({ i }) => {
+const Button = ({ i, text }) => {
   const gameContext = useContext(GameContext);
   const {
     nodes,
@@ -65,7 +65,8 @@ const Button = ({ i }) => {
           onClick={check} 
         />
         <text x={nodes[i].x} y={(nodes[i].y) + 0.2} textAnchor="middle" onClick={check} fill="white">
-          {i+1}
+          {/*{i+1}*/}
+          {text}
         </text>
       </Fragment>
     </Fragment>

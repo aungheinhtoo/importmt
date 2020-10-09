@@ -19,7 +19,12 @@ const gameChoice = () => {
                         </p>
                         <br></br>
 
-                        <Link to="/game">
+                        <Link to={{
+                            pathname:"/game",
+                            state:{
+                                gameLevel: 1,
+                            }
+                        }}>
                         <Button>Select Level 1</Button>
                         </Link>
                     </div>
@@ -38,7 +43,12 @@ const gameChoice = () => {
                             The nodes are a mix of numbers and letters.
                         </p>
                         <br></br>
-                        <Link to="/game">
+                        <Link to={{
+                            pathname:"/game",
+                            state:{
+                                gameLevel: 2,
+                            }
+                        }}>
                         <Button>Select Level 2</Button>
                         </Link>
                     </div>

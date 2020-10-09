@@ -8,9 +8,13 @@ import './Game.css';
 
 import GameContext from '../../context/game/gameContext';
 
-const Game = () => {
+const letters = 'ABCDEFGHIJKLMNPQRSTUVWXYZ';
+
+const Game = (props) => {
     const gameContext = useContext(GameContext);
+    const gameLevel = props.location.state.gameLevel;
     console.log(gameContext);
+    console.log("Game Level:", gameLevel);
     const {
         nodes,
         height,
@@ -33,7 +37,7 @@ const Game = () => {
             <img src={background} alt="empty" width={width} height={height} />
             <svg viewBox={`0 0 ${width} ${height}`}>
                 {nodes.map((node, i) => (
-                    <Button key={i} i={i}></Button>
+                    <Button key={i} i={i} text={(gameLevel==1) ? i : i%2==0 ? (i/2)+1 : letters[(i-1)/2]}></Button>
                 ))}
             </svg>
         </div>
