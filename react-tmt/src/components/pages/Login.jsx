@@ -24,8 +24,7 @@ const Login = props => {
     },[error, isAuthenticated, props.history]);
 
     const onSubmit = data => {
-        alert(JSON.stringify(data));
-
+        
         const d= {
             "user_id" : data.nric,
             "user_password" : data.password,

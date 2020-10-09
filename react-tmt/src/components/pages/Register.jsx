@@ -1,5 +1,4 @@
-import React, {useContext} from "react";
-import {countryData} from "../WebForm/Accessors";
+import React, {useState, useEffect, useContext} from "react";
 import { useForm } from "react-hook-form";
 import AuthContext from "../../context/authContext";
 
@@ -8,16 +7,27 @@ import "./styles.css";
 
 
 const Register = () => {
+    // const [accessors, setAccessors] = useState(null);
     const { register, handleSubmit,getValues, errors} = useForm();
-    
 
     const authContext = useContext(AuthContext)
     // functions I can use from context
     const {
         register_
     } = authContext;
+
+    // useEffect(async()=> {
+    //     const res = await fetch('https://cz3002-server.herokuapp.com/auth/register');
+    //     const data = await res.json();
+
+
+    // },[])
     
-    
+    const countryData = [
+        { value: 'usa_val', name: 'USA' },
+        { value: 'canada_val', name: 'CANADA' }, 
+        { value: 'test', name: 'S7654321Q' }            
+    ];
     const onSubmit = data => {
         //alert(JSON.stringify(data));
 

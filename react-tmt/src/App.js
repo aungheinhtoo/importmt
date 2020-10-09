@@ -24,6 +24,9 @@ import AuthState from './context/AuthState';
 import Login from './components/pages/Login';
 import gameChoice from "./components/pages/GameChoice";
 import GameState from "./context/game/GameState";
+import accessor from "./components/pages/accessor/a_result";
+import User from "./components/pages/participant/result";
+import Menu from "./components/pages/Menu";
 
 class App extends React.Component {
   render(){
@@ -43,6 +46,9 @@ class App extends React.Component {
               <Route exact path="/login" component={Login}/>
               <Route exact path="/game" component = {Game}/>
               <Route exact path = "/gameChoice" component = {gameChoice}/>
+              <Route exact path = "/a_results" component = {accessor}/>
+              <Route exact path = "/result" component = {User}/>
+              <Route exact path = "/menu" component = {Menu}/>
               <Redirect to="/"/>
 
             </Switch>

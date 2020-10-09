@@ -11,11 +11,13 @@ export default (state, action) =>{
         
         case "LOGIN_SUCCESS":
             localStorage.setItem('token', action.payload);
-            alert(JSON.stringify(action.payload));
+            // alert(JSON.stringify(action.payload));
+            // alert(action.input);
             return {
                 ...state,
                 ...action.payload,
                 isAuthenticated: true,
+                user: action.input,
                 loading: false
             };
         case "REGISTER_FAIL":

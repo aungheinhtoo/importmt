@@ -21,7 +21,6 @@ Login test
 Login Reply
 
 
-
 Registration test case (User)
 
 {
@@ -33,7 +32,6 @@ Registration test case (User)
             "user_email": "user@email.com"
 }
 
- Login Reply:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiUzc2NTQzMjFRIiwiaWF0IjoxNTk5OTA1MTc3LCJleHAiOjE1OTk5MDg3Nzd9.cvz5z--BEXUcnnv765sZbGNSIpLeKbqeRbjioW-1z6w"
 
 
 GET userattempts/id
@@ -52,7 +50,7 @@ Steps:
 3. header=> token : token_val (have quotes also nvm)
 4. Response body = "Attempt successfully added!"
 
-User Attempt JSON
+User Attempt JSON for Accessor
 {
     "user_id" : "S7654321Q",
     "time_taken" : 20,
@@ -61,3 +59,14 @@ User Attempt JSON
     "pass_fail": true
 }
 
+User Attempt JSON for User
+[
+    {
+        "attempt_no": 2,
+        "attempted_on": "2020-09-12T18:17:43.000Z",
+        "time_taken": 20,
+        "accuracy": 25,
+        "difficulty": false,
+        "pass_fail": true
+    }
+]

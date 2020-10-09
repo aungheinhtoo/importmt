@@ -67,25 +67,6 @@ const Home = () => {
 
 
             </div>
-
-
-
-            {/* <div className="w3-content">   
-                <div className="w3-center" >
-                    <h1>What is TMT?</h1>
-                </div>
-                <div>
-                    <h1>About Us</h1>
-                </div>
-                <div>
-                    <h1>Contact Us</h1>
-                    <p>The Trail Making Test is a neuropsychological test of visual attention
-                    and task switching. It consists of two parts in which the subject is
-                    instructed to connect a set of 25 dots as quickly as possible while
-                    still maintaining accuracy. It is sensitive to detecting cognitive
-                    impairment associated with dementia; for example, Alzheimer's disease.</p>
-                </div>
-            </div> */}
         </Fragment>
 
 

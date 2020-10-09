@@ -15,7 +15,7 @@ const AuthState = props => {
     };
   
     const [state, dispatch] = useReducer(AuthReducer, initialState);
-
+    
     const loadUser = () => {
       if (localStorage.token) {
         setAuthToken(localStorage.token);
@@ -48,10 +48,10 @@ const AuthState = props => {
       try {
         const res = await axios.post('https://cz3002-server.herokuapp.com/auth/login', formData);
         //**modified setting proxy in package.json; posts to 'http://localhost:5000/api/users
-  
         dispatch({
           type: "LOGIN_SUCCESS",
-          payload: res.data //token
+          payload: res.data, //token
+          input: formData.user_id
         });
 
         loadUser();

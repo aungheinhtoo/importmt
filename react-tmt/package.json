@@ -18,6 +18,8 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.4.3",
     "react-stopwatch": "^2.0.4",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.0",
     "styled-components": "^4.3.2",
     "w3-css": "^4.1.0"
   },
