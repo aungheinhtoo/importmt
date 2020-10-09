@@ -24,7 +24,8 @@ import AuthState from './context/AuthState';
 import Login from './components/pages/Login';
 import gameChoice from "./components/pages/GameChoice";
 import GameState from "./context/game/GameState";
-<<<<<<< HEAD
+import ResultsState from "./context/results/ResultsState";
+
 import accessor from "./components/pages/accessor/a_result";
 import User from "./components/pages/participant/result";
 import Menu from "./components/pages/Menu";
@@ -60,40 +61,6 @@ class App extends React.Component {
 
     );
   }
-=======
-import ResultsState from "./context/results/ResultsState";
-
-class App extends React.Component {
-    render() {
-        return (
-            <AuthState>
-                <ResultsState>
-                    <GameState>
-                        <Router>
-                            <div className="App">
-                                <Navbar/>
-                            </div>
-
-                            <div>
-                                <Switch>
-                                    <Route exact path="/" component={Home}/>
-                                    <Route exact path="/register" component={Register}/>
-                                    <Route exact path="/404" component={NotFoundPage}/>
-                                    <Route exact path="/login" component={Login}/>
-                                    <Route exact path="/game" component={Game}/>
-                                    <Route exact path="/gameChoice" component={gameChoice}/>
-                                    <Redirect to="/"/>
-
-                                </Switch>
-                            </div>
-                        </Router>
-                    </GameState>
-                </ResultsState>
-            </AuthState>
-
-        );
-    }
->>>>>>> 521f1b3b22ccaae69ff2b028e5fb346058b79251
 }
 
 export default App;
