@@ -1,40 +1,70 @@
 import React, {Component, useContext} from 'react';
-import { MenuItems } from "./MenuItems.jsx"
 import { Button } from "../Button"
 import './Navbar.css'
 import AuthContext from "../../context/authContext";
 
+const Navbar = () =>{
+    const authContext = useContext(AuthContext);
+    const { isAuthenticated, logout, user, loading } = authContext;
 
-class Navbar extends Component {
-    state = { clicked: false }
+    const authLinks = [{
+            title: 'Home',
+            url: '/',
+            cName: 'nav-links'
+        },
+            {
+                title: 'Logout',
+                url: '/register',
+                cName: 'nav-links'
+            },
+            {
+                title: 'Menu',
+                url: '/menu',
+                cName: 'nav-links'
+            }]
+    ;
 
-    handleClick = () => {
-        this.setState({ clicked: !this.state.clicked })
+    const guestLinks = [{
+            title: 'Home',
+            url: '/',
+            cName: 'nav-links'
+        },
+            {
+                title: 'Login',
+                url: '/login',
+                cName: 'nav-links'
+            },
+            {
+                title: 'Register',
+                url: '/register',
+                cName: 'nav-links'
+            }]
+    ;
+    let MenuItems;
+    if (isAuthenticated){
+        MenuItems = authLinks;
     }
+    else{
+        MenuItems = guestLinks;
+    }
+    return(
+        <nav className="NavbarItems">
+            <h1 className="navbar-logo">imporTMT</h1>
+            {/* <i className="fab fa-react"></i> */}
 
-    render() {
-
-        return(
-            <nav className="NavbarItems">
-                <h1 className="navbar-logo">imporTMT</h1>
-                {/* <i className="fab fa-react"></i> */}
-                <div className="menu-icon" onClick={this.handleClick}>
-                    <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
-                </div>
-                <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
-                    {MenuItems.map((item, index) => {
-                        return (
-                            <li key={index}>
-                                <a className={item.cName} href={item.url}>
+            <ul className='nav-menu'>
+                {MenuItems.map((item, index) => {
+                    return (
+                        <li key={index}>
+                            <a className={item.cName} href={item.url}>
                                 {item.title}
-                                </a>
-                            </li>
-                        )
-                    })}
-                </ul>
-            </nav>
-        )
-    }
+                            </a>
+                        </li>
+                    )
+                })}
+            </ul>
+        </nav>
+    )
 }
 
 export default Navbar;

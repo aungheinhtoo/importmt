@@ -80,7 +80,6 @@ const Game = (props) => {
                         {results.length > 0 ? (
                             <ResultItem
                                 result={results[results.length - 1]}
-                                showDelete={false}
                             ></ResultItem>
                         ) : null}
                     </Fragment>
