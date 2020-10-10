@@ -1,3 +1,5 @@
+import AuthContext from "../../context/authContext";
+
 export const MenuItems = [
     {
         title: 'Home',
@@ -15,8 +17,8 @@ export const MenuItems = [
         cName: 'nav-links'
     },
     {
-        title: 'Play',
-        url: '/gameChoice',
+        title: 'Menu',
+        url: '/menu',
         cName: 'nav-links'
     }
 

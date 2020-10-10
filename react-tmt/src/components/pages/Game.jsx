@@ -70,57 +70,7 @@ const Game = (props) => {
                     <h6 style={{ color: '#777' }}>Your Result</h6>
                 </div>
             </div>
-            <div className="row">
-                <div
-                    className="col-sm-4 text-center"
-                    style={{
-                        backgroundColor: '#fff',
-                        paddingTop: '16px',
-                        paddingBottom: '32px'
-                    }}
-                >
-                    <strong>
-                        Average Completion Time :<br></br>29s (29000ms)
-                    </strong>
-                </div>
-                <div
-                    className="col-sm-4 text-center"
-                    style={{
-                        backgroundColor: '#fff',
-                        paddingTop: '16px',
-                        paddingBottom: '32px'
-                    }}
-                >
-                    <strong>
-                        Deficiency is suspected :<br></br>>78s (78000ms)
-                    </strong>
-                </div>
-                <div
-                    className="col-sm-4 text-center"
-                    style={{
-                        backgroundColor: '#fff',
-                        paddingTop: '16px',
-                        paddingBottom: '32px'
-                    }}
-                >
-                    <strong>
-                        Most common completion timing :<br></br>90s (90000ms)
-                    </strong>
-                </div>
-            </div>
-            {/*/!* impossible it happens but required to stop code from breaking *!/*/}
-            {/*{results !== null && !loading ? (*/}
-            {/*    <Fragment>*/}
-            {/*        {results.length > 0 ? (*/}
-            {/*            <ResultItem*/}
-            {/*                result={results[results.length - 1]}*/}
-            {/*                showDelete={false}*/}
-            {/*            ></ResultItem>*/}
-            {/*        ) : null}*/}
-            {/*    </Fragment>*/}
-            {/*) : (*/}
-            {/*    <Spinner />*/}
-            {/*)}*/}
+
             <div
                 className="container text-center"
                 style={{ paddingTop: '16px', paddingBottom: '16px' }}
