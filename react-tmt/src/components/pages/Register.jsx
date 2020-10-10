@@ -16,12 +16,11 @@ const Register = () => {
         register_
     } = authContext;
 
-    // useEffect(async()=> {
-    //     const res = await fetch('https://cz3002-server.herokuapp.com/auth/register');
-    //     const data = await res.json();
-
-
-    // },[])
+    useEffect(async ()=> {
+        const res = await fetch('https://cz3002-server.herokuapp.com/listofdoctors/');
+        const data = await res.json();
+        alert(data);
+    },[])
     
     const countryData = [
         { value: 'usa_val', name: 'USA' },

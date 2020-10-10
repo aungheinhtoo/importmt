@@ -14,17 +14,16 @@ const User = () => {
     } = authContext;
 
 
-  useEffect(()=>{
+  useEffect(async ()=>{
+    alert(JSON.stringify(token));
     if(isAuthenticated){
-      fetch(async () =>{
         const res = await fetch("https://cz3002-server.herokuapp.com/userattempts/" + user,
         {
           method: "GET",
-          headers: new Headers(token)
+          headers: new Headers({token: token})
         });
         const data = await res.json();
         setResults(data);
-      })
     } else{
       stopLoading();
     }
@@ -49,13 +48,21 @@ const User = () => {
           var errors = 25 - item.accuracy;
           var date= null;
           var time =null;
+          var status = null;
 
-          if (item.difficulty){
+          if (item.difficulty == true){
             difficulty = 1;
-          } else{
+          } else if (item.difficulty == false){
             difficulty = 2;
+          } else{
+            difficulty = -1;
           }
-          alert(timestamp)
+          if(item.pass_fail){
+            status = "pass";
+          }else{
+            status = "fail";
+          }
+     
           date = String(timestamp.getDate()) + "/" + String(timestamp.getMonth()) + "/" + String(timestamp.getFullYear());
           time = String(timestamp.getHours()) + ":" + String(timestamp.getMinutes());
           return(
@@ -64,7 +71,7 @@ const User = () => {
               <td>{time}</td>
               <td>{errors}</td>
               <td>{difficulty}</td>
-              <td>{String(item.pass_fail)}</td>
+              <td>{status}</td>
             </tr>
 
           )
