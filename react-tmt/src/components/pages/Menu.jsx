@@ -42,7 +42,7 @@ const Menu = props =>{
             >
                 
                 <div className="w3-third">
-                    <Link to ="/game">
+                    <Link to ="/gameChoice">
                         <img src={tmtgame}
                             className="w3-opacity-min"
                             style={{width:"100%", maxWidth:200, maxHeight:200}}
