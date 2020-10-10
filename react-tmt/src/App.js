@@ -34,6 +34,7 @@ class App extends React.Component {
   render(){
     return (
       <AuthState>
+          <ResultsState>
         <GameState>
         <Router>
           <div className="App">
@@ -57,6 +58,7 @@ class App extends React.Component {
           </div>
         </Router>
         </GameState>
+          </ResultsState>
       </AuthState>
 
     );
