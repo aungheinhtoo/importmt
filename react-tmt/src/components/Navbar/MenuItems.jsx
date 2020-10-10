@@ -1,4 +1,5 @@
 import AuthContext from "../../context/authContext";
+import {useContext} from "react";
 
 export const MenuItems = [
     {
@@ -21,6 +22,5 @@ export const MenuItems = [
         url: '/menu',
         cName: 'nav-links'
     }
-
 
 ]

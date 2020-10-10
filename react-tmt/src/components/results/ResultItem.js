@@ -38,13 +38,6 @@ const ResultItem = ({ result, showDelete }) => {
         <h4 className="card-title">
           <span className="badge badge-info">{name ? name : 'Guest'} </span>
         </h4>
-        {name ? (
-          <p className="card-text" style={{ color: '#fff' }}>
-            Date: {`${date.substring(0, 10)} [${date.substring(11, 19)}]`}
-          </p>
-        ) : (
-          ''
-        )}
       </div>
       <div className="card-body">
         <Fragment>

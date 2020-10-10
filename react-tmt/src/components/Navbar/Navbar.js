@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
-import { MenuItems } from "./MenuItems"
+import React, {Component, useContext} from 'react';
+import { MenuItems } from "./MenuItems.jsx"
 import { Button } from "../Button"
 import './Navbar.css'
+import AuthContext from "../../context/authContext";
+
 
 class Navbar extends Component {
     state = { clicked: false }
@@ -11,6 +13,7 @@ class Navbar extends Component {
     }
 
     render() {
+
         return(
             <nav className="NavbarItems">
                 <h1 className="navbar-logo">imporTMT</h1>

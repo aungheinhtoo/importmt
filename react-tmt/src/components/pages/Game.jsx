@@ -33,15 +33,15 @@ const Game = (props) => {
     } = gameContext;
 
     const authContext = useContext(AuthContext);
-    const { stopLoading, loadUser, isAuthenticated } = authContext;
+    const { stopLoading, loadUser, isAuthenticated, token, user } = authContext;
 
     const resultContext = useContext(ResultContext);
-    const { results, addResult, loading, getResults, user } = resultContext;
+    const { results, addResult, loading } = resultContext;
 
 
     useEffect(() => {
         if (end && rawTimings.length === nodes.length) {
-            addResult(rawTimings, numErrors, isAuthenticated, gameLevel, user);
+            addResult(rawTimings, numErrors, isAuthenticated, gameLevel, user, token);
         }
         initGame();
 

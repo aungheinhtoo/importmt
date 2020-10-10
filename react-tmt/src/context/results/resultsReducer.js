@@ -25,16 +25,10 @@ export default (state, action) => {
       } else {
         return {
           ...state,
-          results: [...state.results, action.payload],
+          results: [action.payload],
           loading: false
         };
       }
-    case DELETE_RESULT:
-      return {
-        ...state,
-        results: state.results.filter(result => result._id !== action.payload),
-        loading: false
-      };
     case CLEAR_RESULTS:
       return {
         ...state,

@@ -4,10 +4,7 @@ import ResultsContext from './resultsContext';
 import ResultsReducer from './resultsReducer';
 
 import {
-  GET_RESULTS,
   ADD_RESULT,
-  DELETE_RESULT,
-  // EXPORT_RESULT,
   CLEAR_RESULTS,
   RESULT_ERROR
 } from '../types';
@@ -21,21 +18,13 @@ const ResultsState = props => {
   const [state, dispatch] = useReducer(ResultsReducer, initialState);
 
 
-  // Get Results
-  const getResults = async () => {
-    try {
-      const res = await axios.get('/api/results');
-      dispatch({ type: GET_RESULTS, payload: res.data });
-    } catch (err) {
-      resultError(err);
-    }
-  };
 
   // Add Result
-  const addResult = async (rawTimings, numErrors, isAuthenticated, difficulty, user) => {
+  const addResult = async (rawTimings, numErrors, isAuthenticated, difficulty, name, token) => {
     const config = {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'token': token
       }
     };
 
@@ -46,23 +35,22 @@ const ResultsState = props => {
     }
     let totalTime = rawTimings[rawTimings.length - 1] - rawTimings[0];
 
-    // Post: user_id,time_taken,accuracy,difficulty,pass_fail
-    // TODO: move this only if authenticated
-    let data = {
-      'user_id': user,
-      'time_taken': totalTime,
-      'accuracy': 5-numErrors/5,
-      'difficulty': difficulty,
-      'pass_fail': "Pass"
-    };
-    console.log("Data: ", data);
+
     try {
       if (isAuthenticated) {
-        // if user is logged in, post results to database first
-        const res = await axios.post('https://cz3002-server.herokuapp.com/userattempts', data);
-        dispatch({ type: ADD_RESULT, payload: res.data, local: false });
+        // Post: user_id,time_taken,accuracy,difficulty,pass_fail
+        let data = {
+          'user_id': name,
+          'time_taken': totalTime,
+          'accuracy': 5-numErrors/5,
+          'difficulty': difficulty==1,
+          'pass_fail': true
+        };
+        console.log("Data: ", data);
+        const res = await axios.post('https://cz3002-server.herokuapp.com/userattempts', data, config);
+        console.log(res)
+        dispatch({ type: ADD_RESULT, payload: { timings, numErrors, totalTime, name }, local: true });
       } else {
-        // user is not logged in, display temp copy of result
         dispatch({
           type: ADD_RESULT,
           payload: { timings, numErrors, totalTime },
@@ -74,17 +62,6 @@ const ResultsState = props => {
     }
   };
 
-  // Delete Result
-  const deleteResult = async id => {
-    try {
-      await axios.delete(`/api/results/${id}`);
-      dispatch({ type: DELETE_RESULT, payload: id });
-    } catch (err) {
-      resultError(err);
-    }
-  };
-
-  // Export Result
 
   // Clear Results Upon Logout
   const clearResults = () => {
@@ -93,7 +70,7 @@ const ResultsState = props => {
 
   // Result Error
   const resultError = err => {
-    dispatch({ type: RESULT_ERROR, payload: err.response.msg });
+    dispatch({ type: RESULT_ERROR, payload: err.response});
   };
 
   return (
@@ -102,9 +79,7 @@ const ResultsState = props => {
         results: state.results,
         error: state.error,
 
-        getResults,
         addResult,
-        deleteResult,
         clearResults
       }}
     >
