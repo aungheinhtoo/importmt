@@ -18,18 +18,13 @@ const Login = props => {
 
     useEffect(()=>{
         if (isAuthenticated) {
-            props.history.push('/'); // redirects to '/'
+            props.history.push('/menu'); // redirects to '/'
         }
         stopLoading();
     },[error, isAuthenticated, props.history]);
 
     const onSubmit = data => {
-        
-        const d= {
-            "user_id" : data.nric,
-            "user_password" : data.password,
-        }
-        login(d);
+        login(data);
     }
 
 

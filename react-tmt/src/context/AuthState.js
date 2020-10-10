@@ -11,7 +11,8 @@ const AuthState = props => {
       isAuthenticated: null,
       loading: true,
       user: null,
-      error: null
+      error: null,
+      domain: null
     };
   
     const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -46,12 +47,18 @@ const AuthState = props => {
 
     const login = async formData => {
       try {
-        const res = await axios.post('https://cz3002-server.herokuapp.com/auth/login', formData);
+        const d= {
+          "user_id" : formData.nric,
+          "user_password" : formData.password,
+        }
+        const res = await axios.post('https://cz3002-server.herokuapp.com/auth/login', d);
         //**modified setting proxy in package.json; posts to 'http://localhost:5000/api/users
+        // alert(JSON.stringify(formData));
         dispatch({
           type: "LOGIN_SUCCESS",
           payload: res.data, //token
-          input: formData.user_id
+          input: formData.nric,
+          domain: formData.domain
         });
 
         loadUser();
@@ -87,6 +94,7 @@ const AuthState = props => {
                 loading: state.loading,
                 user: state.user,
                 error: state.error, 
+                domain: state.domain,
                 register_, login, logout, clearErrors, stopLoading
             }}>{props.children}
         </AuthContext.Provider>

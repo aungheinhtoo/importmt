@@ -5,20 +5,20 @@ export default (state, action) =>{
             return {
                 ...state,
                 ...action.payload,
-                isAuthenticated: true,
                 loading: false
             };
         
         case "LOGIN_SUCCESS":
             localStorage.setItem('token', action.payload);
-            // alert(JSON.stringify(action.payload));
-            // alert(action.input);
+            // alert(JSON.stringify(action.domain));
+            alert(action.input);
             return {
                 ...state,
                 ...action.payload,
                 isAuthenticated: true,
                 user: action.input,
-                loading: false
+                loading: false,
+                domain: action.domain
             };
         case "REGISTER_FAIL":
             alert(action.payload);
@@ -36,7 +36,8 @@ export default (state, action) =>{
                 isAuthenticated: false,
                 loading: false,
                 user: null,
-                error: action.payload
+                error: action.payload,
+                domain: null
             };
         case "CLEAR_ERRORS":
             return {
