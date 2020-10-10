@@ -2,6 +2,7 @@ import React, {useState,useEffect,useContext} from "react";
 import { Dropdown, Button} from 'semantic-ui-react'
 import AuthContext from "../../../context/authContext";
 import axios from 'axios';
+import {Link} from "react-router-dom";
 
 const countryOptions = [
   { key: 'af', value: 'af', text: 'Afghanistan' },
@@ -81,7 +82,7 @@ const Accessor = () =>  {
             // border: "3px solid green"
           }}
         >
-          <Dropdown
+          {/* <Dropdown
               clearable
               fluid
               multiple
@@ -91,7 +92,7 @@ const Accessor = () =>  {
               style={{width : 300}}
               placeholder='Select Users'
               onChange={handleChange.bind(this)}
-            />
+            /> */}
 
         </div>
         <div
@@ -104,6 +105,12 @@ const Accessor = () =>  {
             // border: "3px solid green"
           }}
         >
+            <Link to={{
+                pathname:"/game",
+                state:{
+                    "selections": value,
+                }
+            }}>
           <Button 
           style={{margin: 15}}
           href="/404"
