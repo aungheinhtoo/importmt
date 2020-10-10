@@ -44,7 +44,9 @@ const User = () => {
         {results.map((item, index) => {
           
           var difficulty = null;
-          var timestamp = new Date(item.attempted_on);
+          var strings = item.attempted_on;
+          console.log(strings);
+          var timestamp = new Date(strings);
           var errors = 25 - item.accuracy;
           var date= null;
           var time =null;
@@ -63,8 +65,9 @@ const User = () => {
             status = "fail";
           }
      
-          date = String(timestamp.getDate()) + "/" + String(timestamp.getMonth()) + "/" + String(timestamp.getFullYear());
-          time = String(timestamp.getHours()) + ":" + String(timestamp.getMinutes());
+
+          date = strings.split('T')[0];
+          time = strings.split('T')[1].replace('.000Z','');
           return(
             <tr>
               <th scope="row">{date}</th>
