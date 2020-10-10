@@ -25,9 +25,9 @@ const Menu = props =>{
     // },[error, isAuthenticated]);
     const changeLink = domain =>{
         var link ="/404"
-        if (domain == "User"){
+        if (domain === "User"){
             link = "/result";
-        }else if (domain =="Accessor"){
+        }else if (domain === "Accessor"){
             link = "/a_results";
         }
         return(link);

@@ -15,7 +15,6 @@ const User = () => {
 
 
   useEffect(async ()=>{
-    alert(JSON.stringify(token));
     if(isAuthenticated){
         const res = await fetch("https://cz3002-server.herokuapp.com/userattempts/" + user,
         {

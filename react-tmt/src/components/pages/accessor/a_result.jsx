@@ -3,26 +3,17 @@ import { Dropdown, Button} from 'semantic-ui-react'
 import AuthContext from "../../../context/authContext";
 import axios from 'axios';
 
-// const countryOptions = [
-//   { key: 'af', value: 'af', text: 'Afghanistan' },
-//   { key: 'ax', value: 'ax', text: 'Aland Islands' },
-//   { key: 'al', value: 'al', text: 'Albania' },
-//   { key: 'a2', value: 'a2', text: 'Alb1ania' }
-// ]
+const countryOptions = [
+  { key: 'af', value: 'af', text: 'Afghanistan' },
+  { key: 'ax', value: 'ax', text: 'Aland Islands' },
+  { key: 'al', value: 'al', text: 'Albania' },
+  { key: 'a2', value: 'a2', text: 'Alb1ania' }
+]
 
 
 
 
 const Accessor = () =>  {
-  // const [users, setUsers] = useState([]);
-  // useEffect(()=>{
-  //   fetch(async () =>{
-  //     const res = await fetch("https://cz3002-server.herokuapp.com/listofdoctors",{method:"GET"});
-  //     const usersList = await res.json();
-  //     setUsers(usersList);
-  //   });
-    
-  // },[]);
   const [results, setResults] = useState([]);
   const authContext = useContext(AuthContext);
   const { 
@@ -90,17 +81,17 @@ const Accessor = () =>  {
             // border: "3px solid green"
           }}
         >
-          {/* <Dropdown
+          <Dropdown
               clearable
               fluid
               multiple
               search
               selection
-              options={results}
+              options={countryOptions}
               style={{width : 300}}
               placeholder='Select Users'
               onChange={handleChange.bind(this)}
-            /> */}
+            />
 
         </div>
         <div

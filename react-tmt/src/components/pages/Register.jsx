@@ -7,7 +7,7 @@ import "./styles.css";
 
 
 const Register = () => {
-    // const [accessors, setAccessors] = useState(null);
+    const [accessors, setAccessors] = useState([]);
     const { register, handleSubmit,getValues, errors} = useForm();
 
     const authContext = useContext(AuthContext)
@@ -19,14 +19,9 @@ const Register = () => {
     useEffect(async ()=> {
         const res = await fetch('https://cz3002-server.herokuapp.com/listofdoctors/');
         const data = await res.json();
-        alert(data);
+        setAccessors(data);
     },[])
     
-    const countryData = [
-        { value: 'usa_val', name: 'USA' },
-        { value: 'canada_val', name: 'CANADA' }, 
-        { value: 'test', name: 'S7654321Q' }            
-    ];
     const onSubmit = data => {
         //alert(JSON.stringify(data));
 
@@ -42,17 +37,16 @@ const Register = () => {
             bool_accessor = "true";
         }
 
-        // Registration for user
+        // Registration for user+
         const d = {
             "user_id" : data.nric,
             "user_name" : data.name,
             "user_password" : data.password,
             "is_accessor" : bool_accessor,
             "accessor": accessor_name,
-        //    "user_email": "aqwer@qwewqe.com"
             "user_email": "user@email.com"
         }
-        // alert(JSON.stringify(d));
+        alert(JSON.stringify(d));
         register_(d);
 
 
@@ -98,8 +92,8 @@ const Register = () => {
 
             <label className="form_label">Assigned Accessor: </label>
             <select name="accessor" ref={register()}>
-                {countryData.map((item, index) => {
-                    return <option key={item.name}> {item.value} </option>;
+                {accessors.map((item) => {
+                    return <option> {item} </option>;
                 })}
             </select>
             <b id="user_part">If you are registering as an Accessor, skip this part.</b>
