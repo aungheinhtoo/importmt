@@ -4,13 +4,6 @@ import AuthContext from "../../../context/authContext";
 import axios from 'axios';
 import {Link} from "react-router-dom";
 
-const countryOptions = [
-  { key: 'af', value: 'af', text: 'Afghanistan' },
-  { key: 'ax', value: 'ax', text: 'Aland Islands' },
-  { key: 'al', value: 'al', text: 'Albania' },
-  { key: 'a2', value: 'a2', text: 'Alb1ania' }
-]
-
 
 
 
@@ -20,19 +13,33 @@ const Accessor = () =>  {
   const { 
     error, 
     isAuthenticated,
+    token,
     user,
     stopLoading
     } = authContext;
 
 
   useEffect(async ()=>{
+    
     if(isAuthenticated){
-        const res = await axios.get("https://cz3002-server.herokuapp.com/listofdoctors/");
-        setResults(res);
+        const res = await fetch("https://cz3002-server.herokuapp.com/listofpatients/",
+        {
+          method: "GET",
+          headers: new Headers({token: token})
+        });
+        
+        const data = await res.json();
+        var options = data.map((item)=>{
+          const d = {
+            key: item , value: item, text: item
+          }
+          return d;
+        });
+        setResults(options);
     } else{
       stopLoading();
     }
-    alert(results);
+    
   },[error, isAuthenticated]);
 
 
@@ -82,17 +89,17 @@ const Accessor = () =>  {
             // border: "3px solid green"
           }}
         >
-          {/* <Dropdown
+          <Dropdown
               clearable
               fluid
               multiple
               search
               selection
-              options={countryOptions}
+              options={results}
               style={{width : 300}}
               placeholder='Select Users'
               onChange={handleChange.bind(this)}
-            /> */}
+            />
 
         </div>
         <div
@@ -105,12 +112,13 @@ const Accessor = () =>  {
             // border: "3px solid green"
           }}
         >
-            <Link to={{
+            {/* <Link to={{
                 pathname:"/game",
                 state:{
                     "selections": value,
                 }
             }}>
+              </Link> */}
           <Button 
           style={{margin: 15}}
           href="/404"
@@ -123,34 +131,6 @@ const Accessor = () =>  {
 
     </div>
 
-
-
-  //   <div
-  //   className="w3-container w3-content w3-center "
-  //   style={{width: 10000, position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', border: "15px solid red"}}
-  //   >
-  //     <div className="w3-row">
-  //       <div className="w3-col w3-padding-large" style={{minWidth: 10}}>
-  //         Search:
-  //       </div>
-  //       <div className="w3-col " style={{border: "15px solid red"}} >
-  //           <Dropdown
-  //             clearable
-  //             fluid
-  //             multiple
-  //             search
-  //             selection
-  //             options={countryOptions}
-  //             style={{width : 300, border: "15px solid red"}}
-  //             placeholder='Select Country'
-  //             // onChange={handleChange.bind(this)}
-  //           />
-  //           <Button href="/404">Click Here</Button>
-  //       </div>
-        
-  //     </div>
-
-  //     </div>
   );
 }
 

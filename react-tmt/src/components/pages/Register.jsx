@@ -20,6 +20,7 @@ const Register = () => {
         const res = await fetch('https://cz3002-server.herokuapp.com/listofdoctors/');
         const data = await res.json();
         setAccessors(data);
+        
     },[])
     
     const onSubmit = data => {

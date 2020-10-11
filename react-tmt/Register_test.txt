@@ -70,3 +70,26 @@ User Attempt JSON for User
         "pass_fail": true
     }
 ]
+###############################################################
+Accessors:
+{ 
+    name: Naccessor1
+    nric: S0000000Z
+    password: password123
+
+}
+patients(Naccessor1):
+{ 
+    name: Nuser3
+    nric: S2222222Z
+    password: password123
+
+},
+{ 
+    name: Nuser3
+    nric: S3333333Z
+    password: password123
+
+}
+
+
