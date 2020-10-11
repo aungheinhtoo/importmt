@@ -5,19 +5,17 @@ import axios from 'axios';
 import {Link} from "react-router-dom";
 
 
-
-
 const Accessor = () =>  {
   const [results, setResults] = useState([]);
+  let [choiceArr, setChoices] = useState([]);
   const authContext = useContext(AuthContext);
-  const { 
+    const {
     error, 
     isAuthenticated,
     token,
     user,
     stopLoading
     } = authContext;
-
 
   useEffect(async ()=>{
     
@@ -44,9 +42,18 @@ const Accessor = () =>  {
   },[error, isAuthenticated]);
 
 
-  const handleChange = (e, {value}) => {
-    alert(value);
-  }
+    const handleChange = (e, {value}) => {
+        // if (value.length===0){
+        //
+        // }
+        // else {
+        //     choiceArr = [...value];
+        // }
+
+        console.log(value);
+        setChoices([...value]);
+        console.log("ChoiceArr: ", choiceArr);
+    }
   return (
     <div className="w3-container w3-content w3-center w3-padding-64"
       style={{
@@ -113,17 +120,16 @@ const Accessor = () =>  {
             // border: "3px solid green"
           }}
         >
-            {/* <Link to={{
-                pathname:"/game",
-                state:{
-                    "selections": value,
+            <Link to={{
+                pathname: "/a_results",
+                state: {
+                    "selections": [...choiceArr],
                 }
             }}>
-              </Link> */}
-          <Button 
-          style={{margin: 15}}
-          href="/404"
-          >Search</Button>
+                <Button
+                    style={{margin: 15}}
+                >Search</Button>
+            </Link>
 
         </div>
           
