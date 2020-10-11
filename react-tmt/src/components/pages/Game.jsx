@@ -49,7 +49,7 @@ const Game = (props) => {
     }, [end]);
 
     const gamebox = (
-        <div className="img-overlay-wrap">
+        <div className="img-overlay-wrap" style={{paddingLeft: '500px'}}>
             <img src={background} alt="empty" width={width} height={height} />
             <svg viewBox={`0 0 ${width} ${height}`}>
                 {nodes.map((node, i) => (
@@ -98,7 +98,8 @@ const Game = (props) => {
         <div>
             {!end ? (
                 <Fragment>
-                    <div>
+                    <div
+                        style={{border: '15px red'}}>
                         <GameNav></GameNav>
                         {gamebox}
                     </div>

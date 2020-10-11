@@ -21,23 +21,29 @@ const Button = ({ i, text }) => {
     // eslint-disable-next-line
   }, []);
 
-  // check(): function to implement logic triggered upon button click
   const check = () => {
     if (i !== playerPos) {
-      // Wrong choice - error
       incErrors();
     }
     else if (playerPos === numPoints - 1) {
-      // Reached end + final choice is correct
       checkpoint(i);
       endGame();
     } else {
-      // Correct choice - setDone, movePos, and checkpoint
       checkpoint(i);
       setDone(i);
       movePos();
     }
   };
+
+  // const getRadiusChange = (x1, y1, x2, y2, radius) =>{
+  //   var x = x2-x1;
+  //   var y = y2-y1;
+  //   var xlength = (x*((Math.sqrt(Math.pow(x,2)+Math.pow(y,2)))-radius*2))/(Math.sqrt(Math.pow(x,2)+Math.pow(y,2)));
+  //   var ylength = (y*((Math.sqrt(Math.pow(x,2)+Math.pow(y,2)))-radius*2))/(Math.sqrt(Math.pow(x,2)+Math.pow(y,2)));
+  //   console.log([x1+(x-xlength/2),y1+(y-ylength/2),x2-(x-xlength/2),y2-(y-ylength/2)]);
+  //   return [x1+(x-xlength/2),y1+(y-ylength/2),x2-(x-xlength/2),y2-(y-ylength/2)];
+  // }
+
 
   return (
     <Fragment>
@@ -48,6 +54,10 @@ const Button = ({ i, text }) => {
           y1={prevNodes[i].y}
           x2={nodes[i].x}
           y2={nodes[i].y}
+          //   x1={Math.ceil(getRadiusChange(prevNodes[i].x,prevNodes[i].y,nodes[i].x,nodes[i].y,20)[0])}
+          //   y1={Math.ceil(getRadiusChange(prevNodes[i].x,prevNodes[i].y,nodes[i].x,nodes[i].y,20)[0])}
+          //   x2={Math.ceil(getRadiusChange(prevNodes[i].x,prevNodes[i].y,nodes[i].x,nodes[i].y,20)[0])}
+          //   y2={Math.ceil(getRadiusChange(prevNodes[i].x,prevNodes[i].y,nodes[i].x,nodes[i].y,20)[0])}
           strokeWidth={(i>0 && nodes[i].done) === true ? 3 : 0}
           stroke={'white'}
         />
@@ -58,14 +68,13 @@ const Button = ({ i, text }) => {
           key={i}
           cx={nodes[i].x}
           cy={nodes[i].y}
-          r="15"
-          fill={nodes[i].done === true ? '#14b00c' : '#e0701b'}
+          r="20"
+          fill={nodes[i].done === true ? 'green': '#3279a8'}
           stroke="white"
-          strokeWidth="2"
+          strokeWidth="1"
           onClick={check} 
         />
-        <text x={nodes[i].x} y={(nodes[i].y) + 0.2} textAnchor="middle" onClick={check} fill="white">
-          {/*{i+1}*/}
+        <text x={nodes[i].x} y={(nodes[i].y)} textAnchor="middle" onClick={check} fill="white">
           {text}
         </text>
       </Fragment>
@@ -74,15 +83,3 @@ const Button = ({ i, text }) => {
 };
 
 export default Button;
-
-/*<Fragment>
-        <line
-          key={i}
-          x1={prevNodes[i].x}
-          y1={prevNodes[i].y}
-          x2={nodes[i].x}
-          y2={nodes[i].y}
-          strokeWidth={(i>0 && nodes[i].done) === true ? 3 : 0}
-          stroke={'white'}
-        />
-</Fragment>*/
