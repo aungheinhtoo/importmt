@@ -1,10 +1,12 @@
 import React, {useContext, useEffect, useState} from "react";
 import AuthContext from "../../../context/authContext";
 
-const AccessorResults = participants => {
+const AccessorResults = (props) => {
 
   const [results, setResults] = useState([]);
   const authContext = useContext(AuthContext);
+  // TODO: change here
+  let participants = props.location.state.selections[0];
 
   const { 
     error, 
@@ -14,6 +16,7 @@ const AccessorResults = participants => {
     } = authContext;
   useEffect(async ()=>{
     if(isAuthenticated){
+      // change here. the array should be choiceArr
       const res = await fetch("https://cz3002-server.herokuapp.com/patientattempts/" + participants,
       {
         method: "GET",
@@ -24,7 +27,7 @@ const AccessorResults = participants => {
         user: participants,
         attempted_on: data.attempted_on,
         accuracy: data.accuracy,
-        time_taken: data.taken,
+        time_taken: data.time_taken,
         difficulty: data.difficulty,
         pass_fail: data.pass_fail
       }

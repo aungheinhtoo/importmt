@@ -28,7 +28,7 @@ const Menu = props =>{
         if (domain === "User"){
             link = "/result";
         }else if (domain === "Accessor"){
-            link = "/a_results";
+            link = "/a_search";
         }
         return(link);
     }
