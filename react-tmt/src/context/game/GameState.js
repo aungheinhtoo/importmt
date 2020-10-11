@@ -22,42 +22,34 @@ const GameState = props => {
 
   const [state, dispatch] = useReducer(GameReducer, initialState);
 
-  // Initialise game
   const initGame = () => {
     dispatch({ type: INIT_GAME });
   };
 
-  // Move playerpos
   const movePos = () => {
     dispatch({ type: MOVE_POS });
   };
 
-  // Set Done - sets button's state to done
   const setDone = i => {
     dispatch({ type: SET_DONE, i: i });
   };
 
-  // Reset Done - clear's the game data
   const resetDone = () => {
     dispatch({ type: RESET_DONE });
   };
 
-  // Inc Errors - Increments numErrors
   const incErrors = () => {
     dispatch({ type: INC_ERRORS });
   }
 
-  // Checkpoint
   const checkpoint = (i) => {
     dispatch({ type: CHECKPOINT, i: i });
   }
 
-  // End game - set boolean to indicate game end - TRUE
   const endGame = () => {
     dispatch({ type: END_GAME });
   }
 
-  // Start game - set boolean to indicate game start - FALSE
   const startGame = () => {
     dispatch({ type: START_GAME });
   }

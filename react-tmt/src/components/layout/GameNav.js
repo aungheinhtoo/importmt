@@ -5,6 +5,7 @@ import GameContext from '../../context/game/gameContext';
 import Errors from '../Game/Errors';
 import Stopwatch from "../Game/Stopwatch";
 
+
 const GameNav = () => {
   const gameContext = useContext(GameContext);
   const { initGame, end } = gameContext;
@@ -19,10 +20,10 @@ const GameNav = () => {
           <h1>Trail Making Test</h1>
           <h6 style={{ color: '#777' }}>How to play?</h6>
           <p>
-            Click on the circles in ascending order. And avoid those with letters.
+            Click on the circles in ascending order.
             <br></br>
-            Clicking on a circle more than <strong>once </strong>
-            counts towards an error.
+            Clicking on a circle more than once
+            will increase the error even if it is correct.
             <br></br>
           </p>
         </div>

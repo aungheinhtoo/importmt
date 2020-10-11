@@ -7,7 +7,7 @@ const Errors = () => {
 
 	return (
 		<div>
-			<h5>Number of mistakes : { numErrors }</h5>
+			<h5>Number of Errors: { numErrors }</h5>
 		</div>
 	)
 }

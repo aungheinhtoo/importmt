@@ -6,7 +6,7 @@ import AuthContext from "../../context/authContext";
 const Navbar = () =>{
     const authContext = useContext(AuthContext);
     const { isAuthenticated, logout, user, loading } = authContext;
-
+    console.log("NavBar: ",isAuthenticated);
     const authLinks = [{
             title: 'Home',
             url: '/',
