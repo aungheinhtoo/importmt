@@ -12,6 +12,7 @@ const AccessorResults = participants => {
     token,
     stopLoading
     } = authContext;
+    
   useEffect(async ()=>{
     if(isAuthenticated){
       const res = await fetch("https://cz3002-server.herokuapp.com/patientattempts/" + participants,

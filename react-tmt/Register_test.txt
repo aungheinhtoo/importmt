@@ -80,7 +80,7 @@ Accessors:
 }
 patients(Naccessor1):
 { 
-    name: Nuser3
+    name: Nuser2
     nric: S2222222Z
     password: password123
 
