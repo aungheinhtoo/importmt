@@ -26,7 +26,8 @@ import gameChoice from "./components/pages/GameChoice";
 import GameState from "./context/game/GameState";
 import ResultsState from "./context/results/ResultsState";
 
-import Accessor from "./components/pages/accessor/a_result";
+import Accessor from "./components/pages/accessor/a_search";
+import AccessorResults from "./components/pages/accessor/AccessorResult";
 import User from "./components/pages/participant/result";
 import Menu from "./components/pages/Menu";
 
@@ -49,9 +50,10 @@ class App extends React.Component {
               <Route exact path="/login" component={Login}/>
               <Route exact path="/game" component = {Game}/>
               <Route exact path = "/gameChoice" component = {gameChoice}/>
-              <Route exact path = "/a_results" component = {Accessor}/>
+              <Route exact path = "/a_search" component = {Accessor}/>
               <Route exact path = "/result" component = {User}/>
               <Route exact path = "/menu" component = {Menu}/>
+              <Route exact path = "/a_results" component={AccessorResults}/>
               <Redirect to="/"/>
 
             </Switch>

@@ -35,6 +35,7 @@ const Accessor = () =>  {
           }
           return d;
         });
+        
         setResults(options);
     } else{
       stopLoading();

@@ -33,7 +33,7 @@ const User = () => {
       <thead>
         <tr>
           <th scope="col">Date</th>
-          <th scope="col">Time</th>
+          <th scope="col">Time Taken</th>
           <th scope="col">Error</th>
           <th scope="col">Difficulty</th>
           <th scope="col">Status</th>
@@ -44,8 +44,6 @@ const User = () => {
           
           var difficulty = null;
           var strings = item.attempted_on;
-          console.log(strings);
-          var timestamp = new Date(strings);
           var errors = 25 - item.accuracy;
           var date= null;
           var time =null;
@@ -69,8 +67,8 @@ const User = () => {
           time = strings.split('T')[1].replace('.000Z','');
           return(
             <tr>
-              <th scope="row">{date}</th>
-              <td>{time}</td>
+              <th scope="row">{date+" "+ time}</th>
+              <td>{item.time_taken}</td>
               <td>{errors}</td>
               <td>{difficulty}</td>
               <td>{status}</td>
