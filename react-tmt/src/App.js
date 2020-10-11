@@ -25,9 +25,10 @@ import Login from './components/pages/Login';
 import gameChoice from "./components/pages/GameChoice";
 import GameState from "./context/game/GameState";
 import ResultsState from "./context/results/ResultsState";
+import DataState from "./context/userdata/dataState";
 
 import Accessor from "./components/pages/accessor/a_search";
-import AccessorResults from "./components/pages/accessor/AccessorResult";
+import AccessorResult from "./components/pages/accessor/AccessorResult";
 import User from "./components/pages/participant/result";
 import Menu from "./components/pages/Menu";
 
@@ -35,6 +36,7 @@ class App extends React.Component {
   render(){
     return (
       <AuthState>
+        <DataState>
           <ResultsState>
         <GameState>
         <Router>
@@ -53,14 +55,16 @@ class App extends React.Component {
               <Route exact path = "/a_search" component = {Accessor}/>
               <Route exact path = "/result" component = {User}/>
               <Route exact path = "/menu" component = {Menu}/>
-              <Route exact path = "/a_results" component={AccessorResults}/>
+              <Route exact path = "/a_results" component={AccessorResult}/>
               <Redirect to="/"/>
 
             </Switch>
           </div>
         </Router>
+        
         </GameState>
           </ResultsState>
+          </DataState>
       </AuthState>
 
     );

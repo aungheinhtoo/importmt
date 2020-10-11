@@ -3,6 +3,10 @@ import { Dropdown, Button} from 'semantic-ui-react'
 import AuthContext from "../../../context/authContext";
 import axios from 'axios';
 import {Link} from "react-router-dom";
+import DataContext from "../../../context/userdata/dataContext";
+
+
+
 
 
 const Accessor = () =>  {
@@ -13,46 +17,43 @@ const Accessor = () =>  {
     error, 
     isAuthenticated,
     token,
-    user,
     stopLoading
     } = authContext;
 
-  useEffect(async ()=>{
-    
+  useEffect(()=>{
     if(isAuthenticated){
-        const res = await fetch("https://cz3002-server.herokuapp.com/listofpatients/",
+      const asyncCallback = async () =>{
+        const res = await axios.get("https://cz3002-server.herokuapp.com/listofpatients/",
         {
-          method: "GET",
-          headers: new Headers({token: token})
+          headers: {token: token}
         });
-        
-        const data = await res.json();
+        const data = res.data;
+        alert(JSON.stringify(data));
         var options = data.map((item)=>{
           const d = {
             key: item , value: item, text: item
           }
           return d;
-        });
+        })
         
         setResults(options);
+      };
+      asyncCallback();
+        
     } else{
       stopLoading();
     }
     
-  },[error, isAuthenticated]);
+    },[]);
 
 
     const handleChange = (e, {value}) => {
-        // if (value.length===0){
-        //
-        // }
-        // else {
-        //     choiceArr = [...value];
-        // }
-
-        console.log(value);
+        if (value.length===0){
+        }
+        else {
+            choiceArr = [...value];
+        }
         setChoices([...value]);
-        console.log("ChoiceArr: ", choiceArr);
     }
   return (
     <div className="w3-container w3-content w3-center w3-padding-64"
@@ -120,12 +121,13 @@ const Accessor = () =>  {
             // border: "3px solid green"
           }}
         >
-            <Link to={{
-                pathname: "/a_results",
-                state: {
-                    "selections": [...choiceArr],
-                }
-            }}>
+            <Link to=
+                {{ pathname: "/a_results",
+                 state: {
+                     "selections": [...choiceArr],
+                 }
+             }} 
+             >
                 <Button
                     style={{margin: 15}}
                 >Search</Button>
