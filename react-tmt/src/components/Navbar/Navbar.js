@@ -14,7 +14,7 @@ const Navbar = () =>{
         },
             {
                 title: 'Logout',
-                url: '/register',
+                url: '/login',
                 cName: 'nav-links'
             },
             {

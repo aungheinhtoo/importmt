@@ -28,7 +28,7 @@ const Accessor = () =>  {
           headers: {token: token}
         });
         const data = res.data;
-        alert(JSON.stringify(data));
+        // alert(JSON.stringify(data));
         var options = data.map((item)=>{
           const d = {
             key: item , value: item, text: item

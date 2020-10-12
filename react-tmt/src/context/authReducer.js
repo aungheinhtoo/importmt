@@ -2,7 +2,7 @@ export default (state, action) =>{
     switch(action.type){
         case "REGISTER_SUCCESS":
             // localStorage.setItem('token', action.payload);
-            alert(JSON.stringify(action.payload));
+            alert("Registration Success!");
             return {
                 ...state,
                 ...action.payload,
@@ -12,7 +12,7 @@ export default (state, action) =>{
         case "LOGIN_SUCCESS":
             localStorage.setItem('token', action.payload);
             // alert(JSON.stringify(action.domain));
-            alert(action.input);
+            // alert(action.input);
             return {
                 ...state,
                 ...action.payload,
