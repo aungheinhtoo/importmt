@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, Fragment } from 'react';
+import React, {useContext, useEffect, Fragment} from 'react';
 import background from '../Game/background.jpg';
 
 import GameNav from '../../components/layout/GameNav';
@@ -33,10 +33,10 @@ const Game = (props) => {
     } = gameContext;
 
     const authContext = useContext(AuthContext);
-    const { stopLoading, loadUser, isAuthenticated, token, user } = authContext;
+    const {stopLoading, loadUser, isAuthenticated, token, user} = authContext;
 
     const resultContext = useContext(ResultContext);
-    const { results, addResult, loading } = resultContext;
+    const {results, addResult, loading} = resultContext;
 
 
     useEffect(() => {
@@ -45,15 +45,15 @@ const Game = (props) => {
         }
         initGame();
 
-        // eslint-disable-next-line
     }, [end]);
 
     const gamebox = (
         <div className="img-overlay-wrap" style={{paddingLeft: '500px'}}>
-            <img src={background} alt="empty" width={width} height={height} />
+            <img src={background} alt="empty" width={width} height={height}/>
             <svg viewBox={`0 0 ${width} ${height}`}>
                 {nodes.map((node, i) => (
-                    <Button key={i} i={i} text={(gameLevel==1) ? i+1 : i%2==0 ? (i/2)+1 : letters[(i-1)/2]}></Button>
+                    <Button key={i} i={i}
+                            text={(gameLevel == 1) ? i + 1 : i % 2 == 0 ? (i / 2) + 1 : letters[(i - 1) / 2]}></Button>
                 ))}
             </svg>
         </div>
@@ -63,17 +63,17 @@ const Game = (props) => {
         <Fragment>
             <div
                 className="jumbotron text-center jumbotron-fluid"
-                style={{ backgroundColor: '#f0f8ff' }}
+                style={{backgroundColor: '#f0f8ff'}}
             >
                 <div className="container">
                     <h1>Trail Making Test</h1>
-                    <h6 style={{ color: '#777' }}>Your Result</h6>
+                    <h6 style={{color: '#777'}}>Your Result</h6>
                 </div>
             </div>
 
             <div
                 className="container text-center"
-                style={{ paddingTop: '16px', paddingBottom: '16px' }}
+                style={{paddingTop: '16px', paddingBottom: '16px'}}
             >
                 {results !== null && !loading ? (
                     <Fragment>
@@ -84,7 +84,7 @@ const Game = (props) => {
                         ) : null}
                     </Fragment>
                 ) : (
-                    <Spinner />
+                    <Spinner/>
                 )}
                 <button type="button" className="btn btn-success" onClick={startGame}>
                     Try Again
