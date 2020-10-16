@@ -30,7 +30,7 @@ const Register = () => {
         var bool_accessor = null;
         var accessor_name = "null";
 
-        if (data.domain === "User"){
+        if (data.domain === "Participant"){
             bool_accessor = "false";
             accessor_name = data.accessor
         }
@@ -87,8 +87,8 @@ const Register = () => {
             <label className="form_label">Domain:</label>
             <select name="domain" ref={register({required : true})} >
                 <option>Select ...</option>
-                <option>User</option>
-                <option>Accessor</option>
+                <option>Participant</option>
+                <option>Assessor</option>
             </select>
 
             <label className="form_label">Assigned Accessor: </label>

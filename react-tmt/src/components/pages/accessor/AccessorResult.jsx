@@ -50,7 +50,7 @@ const AccessorResult = props => {
     <table className="table">
           <thead>
             <tr>
-              <th scope="col">User</th>
+              <th scope="col">Participant</th>
               <th scope="col">Date</th>
               <th scope="col">Time Taken</th>
               <th scope="col">Error</th>
