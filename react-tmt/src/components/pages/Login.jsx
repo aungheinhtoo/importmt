@@ -40,7 +40,7 @@ const Login = props => {
             <input className="form_input" name="password" type= "password" ref={register({required : true, minLength: 6})}/>
             {errors.password && errors.password.type === "required" && (<p className="form_p">This is required.</p>)}
 
-            <label>Domain:</label>
+            <label className="form_label">Domain:</label>
             <select name="domain" ref={register({required : true})} >
                 <option>Select ...</option>
                 <option>User</option>
