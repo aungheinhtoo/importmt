@@ -85,7 +85,7 @@ const Accessor = () =>  {
           }}
         >
 
-          <p style={{margin: 15}}>Search Users:</p>
+          <p style={{margin: 15}}>Search Participants:</p>
 
         </div>
         <div

@@ -25,19 +25,19 @@ const Menu = props =>{
     // },[error, isAuthenticated]);
     const changeLink = domain =>{
         var link ="/404"
-        if (domain === "User"){
+        if (domain === "Participant"){
             link = "/result";
-        }else if (domain === "Accessor"){
+        }else if (domain === "Assessor"){
             link = "/a_search";
         }
         return(link);
     }
 
     return(
-        <div>
+        <div className="w3-container  w3-padding-64">
             <h1> Welcome {user} !</h1>
             <div
-            className="w3-container w3-content w3-center w3-padding-64"
+            className="w3-container w3-content w3-center w3-padding-32"
             style={{width: 10000 ,position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)'}}
             >
                 
