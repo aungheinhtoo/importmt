@@ -11,6 +11,7 @@ export default (state, action) =>{
         
         case "LOGIN_SUCCESS":
             localStorage.setItem('token', action.payload);
+            console.log(action.payload);
             // alert(JSON.stringify(action.domain));
             // alert(action.input);
             return {

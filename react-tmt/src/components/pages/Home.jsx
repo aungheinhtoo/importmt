@@ -1,8 +1,22 @@
-import React from "react";
+import React, {useContext, useEffect} from "react";
 import { Fragment } from "react";
+import AuthContext from "../../context/authContext";
+
+
+
 
 const Home = () => {
-
+    const authContext = useContext(AuthContext);
+    const {
+        error,
+        user,
+        domain,
+        isAuthenticated,
+        stopLoading
+    } = authContext;
+    useEffect (()=>{
+        alert(isAuthenticated);
+    });
     return(
         <Fragment>
             <div

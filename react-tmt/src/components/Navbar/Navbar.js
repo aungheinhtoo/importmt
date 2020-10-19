@@ -2,6 +2,7 @@ import React, {Component, useContext} from 'react';
 import { Button } from "../Button"
 import './Navbar.css'
 import AuthContext from "../../context/authContext";
+import {Link, NavLink} from 'react-router-dom';
 
 const Navbar = () =>{
     const authContext = useContext(AuthContext);
@@ -53,13 +54,17 @@ const Navbar = () =>{
             {/* <i className="fab fa-react"></i> */}
 
             <ul className='nav-menu'>
+                {/*<li key={index}>*/}
+                {/*    <a className={item.cName} href={item.url}>*/}
+                {/*        {item.title}*/}
+                {/*    </a>*/}
+                {/*</li>*/}
                 {MenuItems.map((item, index) => {
+
                     return (
-                        <li key={index}>
-                            <a className={item.cName} href={item.url}>
-                                {item.title}
-                            </a>
-                        </li>
+                        <Link to={item.url} className = {item.cName}>
+                            {item.title}
+                        </Link>
                     )
                 })}
             </ul>
