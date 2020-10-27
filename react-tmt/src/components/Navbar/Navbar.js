@@ -5,19 +5,18 @@ import AuthContext from "../../context/authContext";
 import {Link, NavLink} from 'react-router-dom';
 import Dropdown from "react-bootstrap/Dropdown";
 
-const CustomToggle = React.forwardRef(({ children, onClick: onClick}, ref) => {
+const CustomToggle = React.forwardRef(({ children, onClick: onClick, className}, ref) => {
     return (
         <a
             href=""
             ref={ref}
-            className='nav-links'
+            className={className}
             onClick={(e) => {
                 e.preventDefault();
                 onClick(e);
             }}
         >
             {children}
-            &#x25bc;
         </a>
     );
 });
@@ -51,11 +50,6 @@ const Navbar = () =>{
                 title: 'Login',
                 url: '/login',
                 cName: 'nav-links'
-            },
-            {
-                title: 'Register',
-                url: '/register',
-                cName: 'nav-links'
             }]
     ;
     let MenuItems;
@@ -77,33 +71,41 @@ const Navbar = () =>{
                 {/*    </a>*/}
                 {/*</li>*/}
                 {MenuItems.map((item, index) => {
+                    if (item.title==='Logout'){
+                        return (<a className={item.cName} href={item.url}>
+                            {item.title}
+                        </a>)
+                    }
                     return (
-                        // {item.title==='Logout'? <Link to={item.url} className = {item.cName}>
-                        //         {item.title}
-                        //     </Link> :
-                        //
-                        // }
                         <Link to={item.url} className = {item.cName}>
                             {item.title}
                         </Link>
                     )
                 })}
                 {isAuthenticated ?
-                    <Dropdown>
-                        <Dropdown.Toggle as={CustomToggle} id="loginstate">
-                            {user}
-                        </Dropdown.Toggle>
+                    //     <Dropdown>
+                    //         <Dropdown.Toggle variant="success" id="loginstate" className = 'nav-links'>
+                    //             {user}
+                    //         </Dropdown.Toggle>
+                    //
+                    //
+                    //         <Dropdown.Menu>
+                    //             <Dropdown.Item><Link to={'/Menu'}>Menu</Link></Dropdown.Item>
+                    //             <Dropdown.Item><Link to={'/login'}>Logout</Link></Dropdown.Item>
+                    //         </Dropdown.Menu>
+                    //     </Dropdown>
+                    //     :
+                    //     <Dropdown></Dropdown>
+                    // }
+                    <Link to='/menu' className='nav-links'>
+                        {user}
+                    </Link> :
+                    <Link to='/register' className='nav-links'>
+                        Register
+                    </Link>
+                }
 
-
-                        <Dropdown.Menu>
-                            <Dropdown.Item><Link to={'/Menu'}>Menu</Link></Dropdown.Item>
-                            <Dropdown.Item><Link to={'/login'}>Logout</Link></Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                    :
-                    <Dropdown></Dropdown>
-                }            
-                </ul>
+            </ul>
         </nav>
     )
 }
