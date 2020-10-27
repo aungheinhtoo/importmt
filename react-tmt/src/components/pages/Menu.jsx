@@ -1,6 +1,6 @@
 import React, {useContext, useEffect } from 'react';
 import tmtgame from "../../icons/tmt_game.png"
-import logout from "../../icons/logout.png"
+import logout_ from "../../icons/logout.png"
 import records from "../../icons/records.png"
 import {Link} from  "react-router-dom"
 import AuthContext from "../../context/authContext";
@@ -12,7 +12,8 @@ const Menu = props =>{
         user,
         domain,
         isAuthenticated, 
-        stopLoading
+        stopLoading,
+        logout
     } = authContext;
 
     // useEffect(()=>{
@@ -62,13 +63,16 @@ const Menu = props =>{
  
                 </div>
                 <div className="w3-third">
-                    <Link to ="/home">
-                        <img src={logout}
+                    <a href ="/home"
+                        onclick={logout}
+                    >
+                        <img src={logout_}
                             className="w3-opacity-min"
                             style={{width:"100%", maxWidth:200, maxHeight:200}}
+                            
                         ></img>
                         <p>Logout</p>
-                    </Link>
+                    </a>
                 </div>
             </div>
 

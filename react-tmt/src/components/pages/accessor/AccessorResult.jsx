@@ -6,7 +6,7 @@ const AccessorResult = props => {
   const [results, setResults] = useState([]);
   const authContext = useContext(AuthContext);
   // TODO: change here
-  let participants = props.location.state.selections[0];
+  let participants = props.location.state.selections;
   // let participants = ["Nuser2"];
   const { 
     error, 
@@ -19,7 +19,7 @@ const AccessorResult = props => {
     
     if(isAuthenticated){
       // change here. the array should be choiceArr
-      
+      //alert(participants);
       const res = await fetch("https://cz3002-server.herokuapp.com/patientattempts/" + participants,
       {
         method: "GET",

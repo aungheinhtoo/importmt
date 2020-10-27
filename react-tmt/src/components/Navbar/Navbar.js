@@ -7,6 +7,7 @@ const Navbar = () =>{
     const authContext = useContext(AuthContext);
     const { isAuthenticated, logout, user, loading } = authContext;
     console.log("NavBar: ",isAuthenticated);
+    alert(isAuthenticated);
     const authLinks = [{
             title: 'Home',
             url: '/',

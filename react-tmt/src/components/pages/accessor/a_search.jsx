@@ -48,12 +48,15 @@ const Accessor = () =>  {
 
 
     const handleChange = (e, {value}) => {
+        // alert(value);
         if (value.length===0){
         }
         else {
-            choiceArr = [...value];
+            choiceArr = [value];
         }
-        setChoices([...value]);
+
+
+        setChoices([value]);
     }
   return (
     <div className="w3-container w3-content w3-center w3-padding-64"
@@ -101,7 +104,6 @@ const Accessor = () =>  {
           <Dropdown
               clearable
               fluid
-              multiple
               search
               selection
               options={results}
