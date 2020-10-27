@@ -2,12 +2,29 @@ import React, {Component, useContext} from 'react';
 import { Button } from "../Button"
 import './Navbar.css'
 import AuthContext from "../../context/authContext";
+import {Link, NavLink} from 'react-router-dom';
+import Dropdown from "react-bootstrap/Dropdown";
 
+const CustomToggle = React.forwardRef(({ children, onClick: onClick}, ref) => {
+    return (
+        <a
+            href=""
+            ref={ref}
+            className='nav-links'
+            onClick={(e) => {
+                e.preventDefault();
+                onClick(e);
+            }}
+        >
+            {children}
+            &#x25bc;
+        </a>
+    );
+});
 const Navbar = () =>{
     const authContext = useContext(AuthContext);
-    const { isAuthenticated, logout, user, loading } = authContext;
-    console.log("NavBar: ",isAuthenticated);
-    alert(isAuthenticated);
+    const { isAuthenticated, logout, user, loading, domain } = authContext;
+    console.log("NavBar: ",isAuthenticated, 'for ', user);
     const authLinks = [{
             title: 'Home',
             url: '/',
@@ -54,16 +71,39 @@ const Navbar = () =>{
             {/* <i className="fab fa-react"></i> */}
 
             <ul className='nav-menu'>
+                {/*<li key={index}>*/}
+                {/*    <a className={item.cName} href={item.url}>*/}
+                {/*        {item.title}*/}
+                {/*    </a>*/}
+                {/*</li>*/}
                 {MenuItems.map((item, index) => {
                     return (
-                        <li key={index}>
-                            <a className={item.cName} href={item.url}>
-                                {item.title}
-                            </a>
-                        </li>
+                        // {item.title==='Logout'? <Link to={item.url} className = {item.cName}>
+                        //         {item.title}
+                        //     </Link> :
+                        //
+                        // }
+                        <Link to={item.url} className = {item.cName}>
+                            {item.title}
+                        </Link>
                     )
                 })}
-            </ul>
+                {isAuthenticated ?
+                    <Dropdown>
+                        <Dropdown.Toggle as={CustomToggle} id="loginstate">
+                            {user}
+                        </Dropdown.Toggle>
+
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item><Link to={'/Menu'}>Menu</Link></Dropdown.Item>
+                            <Dropdown.Item><Link to={'/login'}>Logout</Link></Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    :
+                    <Dropdown></Dropdown>
+                }            
+                </ul>
         </nav>
     )
 }

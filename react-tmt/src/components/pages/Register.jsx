@@ -91,13 +91,13 @@ const Register = () => {
                 <option>Assessor</option>
             </select>
 
-            <label className="form_label">Assigned Accessor: </label>
+            <label className="form_label">Assigned Assessor: </label>
             <select name="accessor" ref={register()}>
                 {accessors.map((item) => {
                     return <option> {item} </option>;
                 })}
             </select>
-            <b id="user_part">If you are registering as an Accessor, skip this part.</b>
+            <b id="user_part">If you are registering as an Assessor, skip this part.</b>
             
             {/* <label>Assigned Users (Please enter in the form of user1, user2,... etc)</label>
             <textarea name="assigned_users"  ref={register()}/>

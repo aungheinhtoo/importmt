@@ -40,7 +40,7 @@ const ResultsState = props => {
                 let data = {
                     'user_id': name,
                     'time_taken': totalTime,
-                    'accuracy': 20 - numErrors / 20,
+                    'accuracy': 25 - numErrors / 25,
                     'difficulty': difficulty == 1,
                     'pass_fail': true
                 };
