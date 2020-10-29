@@ -36,8 +36,8 @@ const User = () => {
       <thead>
         <tr>
           <th scope="col">Date</th>
-          <th scope="col">Time Taken</th>
-          <th scope="col">Error</th>
+          <th scope="col">Time Taken (ms)</th>
+          <th scope="col">Number of Misclicks </th>
           <th scope="col">Difficulty</th>
           <th scope="col">Status</th>
         </tr>
@@ -47,7 +47,7 @@ const User = () => {
           
           var difficulty = null;
           var strings = item.attempted_on;
-          var errors = 25 - item.accuracy;
+          var errors = item.accuracy;
           var date= null;
           var time =null;
           var status = null;
