@@ -3,7 +3,7 @@ import AuthContext from "../../../context/authContext";
 import axios from "axios";
 // import {JSONReply} from "./data";
 
-const User = () => {
+const User = (props) => {
   const [results, setResults] = useState([]);
   const authContext = useContext(AuthContext);
   const { 
@@ -17,14 +17,23 @@ const User = () => {
 
   useEffect( ()=>{
     if(isAuthenticated){
+        let body = {
+            start: props.location.state.start,
+            end: props.location.state.end
+        }
+        console.log(body)
         const asyncCallback = async () => {
             const res = await axios.get("https://cz3002-server.herokuapp.com/userattempts/" + user,
                 {
-                    headers: {token: token}
+                    headers: {token: token},
+                    body: body
                 });
             const data = res.data
             setResults(data);
-        };asyncCallback();
+            // console.log(props.location.state.start, props.location.state.end);
+            // console.log(typeof props.location.state.start)
+        };
+        asyncCallback();
 
     } else{
       stopLoading();

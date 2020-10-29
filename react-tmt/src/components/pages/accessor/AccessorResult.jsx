@@ -17,15 +17,25 @@ const AccessorResult = props => {
     } = authContext;
     
   useEffect(()=>{
-    
+        let startend = {
+          start: props.location.state.daterange.start,
+          end: props.location.state.daterange.end
+        }
+        console.log(startend);
     if(isAuthenticated) {
       // change here. the array should be choiceArr
       //alert(participants);
       const asyncCallback = async () => {
         const res = await axios.get("https://cz3002-server.herokuapp.com/patientattempts/" + participants,
             {
-              headers: {token: token}
+              headers: {token: token},
+              body: startend,
+              data: {
+                start: startend.start,
+                end: startend.end
+              }
             });
+        console.log(res);
 
       const data = res.data
       const d = data.map((item, index) => {

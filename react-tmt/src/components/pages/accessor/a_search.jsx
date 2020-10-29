@@ -9,9 +9,10 @@ import DataContext from "../../../context/userdata/dataContext";
 
 
 
-const Accessor = () =>  {
+const Accessor = (props) =>  {
   const [results, setResults] = useState([]);
   let [choiceArr, setChoices] = useState([]);
+  const mystate = props.location.state;
   const authContext = useContext(AuthContext);
     const {
     error, 
@@ -127,6 +128,7 @@ const Accessor = () =>  {
                 {{ pathname: "/a_results",
                  state: {
                      "selections": [...choiceArr],
+                     "daterange": mystate
                  }
              }} 
              >
