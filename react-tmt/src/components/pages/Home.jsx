@@ -15,7 +15,6 @@ const Home = () => {
         stopLoading
     } = authContext;
     useEffect (()=>{
-        alert(isAuthenticated);
     });
     return(
         <Fragment>

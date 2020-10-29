@@ -64,7 +64,6 @@ const Menu = props => {
             {/*    isShowing={isShowing}*/}
             {/*    hide={toggle}*/}
             {/*/>*/}
-            <h1> Welcome {user} !</h1>
             <Modal show={isOpen} onHide={hideModal}>
                 <Modal.Header>
                     <Modal.Title>Please Select the date range.</Modal.Title>
