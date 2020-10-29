@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from "react";
 import { useForm } from "react-hook-form";
 import AuthContext from "../../context/authContext";
-
+import axios from 'axios';
 import "./styles.css";
 
 
@@ -16,11 +16,13 @@ const Register = () => {
         register_
     } = authContext;
 
-    useEffect(async ()=> {
-        const res = await fetch('https://cz3002-server.herokuapp.com/listofdoctors/');
-        const data = await res.json();
-        setAccessors(data);
-        
+    useEffect(()=> {
+        const asyncCallback = async () =>{
+            const res = await axios.get('https://cz3002-server.herokuapp.com/listofdoctors/');
+            const data = res.data;
+            setAccessors(data);
+        }
+        asyncCallback();
     },[])
     
     const onSubmit = data => {
