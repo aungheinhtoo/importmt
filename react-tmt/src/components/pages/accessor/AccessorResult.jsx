@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import AuthContext from "../../../context/authContext";
+import axios from "axios";
 
 const AccessorResult = props => {
 
@@ -15,20 +16,20 @@ const AccessorResult = props => {
     stopLoading
     } = authContext;
     
-  useEffect(async()=>{
+  useEffect(()=>{
     
-    if(isAuthenticated){
+    if(isAuthenticated) {
       // change here. the array should be choiceArr
       //alert(participants);
-      const res = await fetch("https://cz3002-server.herokuapp.com/patientattempts/" + participants,
-      {
-        method: "GET",
-        headers: new Headers({token: token})
-      });
-      const data = await res.json();
-      
-      const d = data.map((item,index)=>{
-        const new_data= {
+      const asyncCallback = async () => {
+        const res = await axios.get("https://cz3002-server.herokuapp.com/patientattempts/" + participants,
+            {
+              headers: {token: token}
+            });
+
+      const data = res.data
+      const d = data.map((item, index) => {
+        const new_data = {
           user: participants,
           attempted_on: item.attempted_on,
           accuracy: item.accuracy,
@@ -37,14 +38,18 @@ const AccessorResult = props => {
           pass_fail: item.pass_fail
         };
         return new_data;
+
+
       });
 
       setResults(d);
+    };
+       asyncCallback();
     }else{
       stopLoading();
     }
     
-  },[isAuthenticated, error]
+  },[]
   );
   return(
     <table className="table">

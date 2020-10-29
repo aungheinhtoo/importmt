@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useContext} from "react";
 import AuthContext from "../../../context/authContext";
+import axios from "axios";
 // import {JSONReply} from "./data";
 
 const User = () => {
@@ -14,15 +15,17 @@ const User = () => {
     } = authContext;
 
 
-  useEffect(async ()=>{
+  useEffect( ()=>{
     if(isAuthenticated){
-        const res = await fetch("https://cz3002-server.herokuapp.com/userattempts/" + user,
-        {
-          method: "GET",
-          headers: new Headers({token: token})
-        });
-        const data = await res.json();
-        setResults(data);
+        const asyncCallback = async () => {
+            const res = await axios.get("https://cz3002-server.herokuapp.com/userattempts/" + user,
+                {
+                    headers: {token: token}
+                });
+            const data = res.data
+            setResults(data);
+        };asyncCallback();
+
     } else{
       stopLoading();
     }

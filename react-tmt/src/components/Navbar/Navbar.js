@@ -50,7 +50,12 @@ const Navbar = () =>{
                 title: 'Login',
                 url: '/login',
                 cName: 'nav-links'
-            }]
+            },
+        {
+            title: 'Register',
+            url: '/register',
+            cName: 'nav-links'
+        }]
     ;
     let MenuItems;
     if (isAuthenticated){
@@ -65,23 +70,6 @@ const Navbar = () =>{
             {/* <i className="fab fa-react"></i> */}
 
             <ul className='nav-menu'>
-                {/*<li key={index}>*/}
-                {/*    <a className={item.cName} href={item.url}>*/}
-                {/*        {item.title}*/}
-                {/*    </a>*/}
-                {/*</li>*/}
-                {MenuItems.map((item, index) => {
-                    if (item.title==='Logout'){
-                        return (<a className={item.cName} href={item.url}>
-                            {item.title}
-                        </a>)
-                    }
-                    return (
-                        <Link to={item.url} className = {item.cName}>
-                            {item.title}
-                        </Link>
-                    )
-                })}
                 {isAuthenticated ?
                     //     <Dropdown>
                     //         <Dropdown.Toggle variant="success" id="loginstate" className = 'nav-links'>
@@ -97,13 +85,24 @@ const Navbar = () =>{
                     //     :
                     //     <Dropdown></Dropdown>
                     // }
-                    <Link to='/menu' className='nav-links'>
-                        {user}
-                    </Link> :
-                    <Link to='/register' className='nav-links'>
-                        Register
-                    </Link>
+                    <li className='nav-user'>
+                        Welcome {user}
+                    </li> :
+                    <li></li>
                 }
+                {MenuItems.map((item, index) => {
+                    if (item.title==='Logout'){
+                        return (<a className={item.cName} href={item.url}>
+                            {item.title}
+                        </a>)
+                    }
+                    return (
+                        <Link to={item.url} className = {item.cName}>
+                            {item.title}
+                        </Link>
+                    )
+                })}
+
 
             </ul>
         </nav>

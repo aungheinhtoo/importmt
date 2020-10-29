@@ -17,7 +17,7 @@ const GameState = props => {
 
         width: 1036,
         height: 553,
-        numPoints: 25,
+        numPoints: 10,
     };
 
     const [state, dispatch] = useReducer(GameReducer, initialState);
