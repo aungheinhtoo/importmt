@@ -17,21 +17,19 @@ const User = (props) => {
 
   useEffect( ()=>{
     if(isAuthenticated){
-        let body = {
-            start: props.location.state.start,
-            end: props.location.state.end
+        let startend = {
+            'start': props.location.state.start,
+            'end': props.location.state.end
         }
-        console.log(body)
         const asyncCallback = async () => {
-            const res = await axios.get("https://cz3002-server.herokuapp.com/userattempts/" + user,
-                {
-                    headers: {token: token},
-                    body: body
-                });
+            const res = await axios({
+                method: "post",
+                url: "https://cz3002-server.herokuapp.com/userattempts/" + user,
+                headers: {token: token},
+                data :  startend
+            })
             const data = res.data
             setResults(data);
-            // console.log(props.location.state.start, props.location.state.end);
-            // console.log(typeof props.location.state.start)
         };
         asyncCallback();
 
