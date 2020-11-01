@@ -1,9 +1,10 @@
 import React from "react";
 import {Fragment} from "react";
-import {Button} from '../../components/Button'
+// import {Button} from '../../components/Button'
 import {Link} from "react-router-dom";
 import difficulty1 from "../Game/difficulty1.png"
 import difficulty2 from "../Game/difficulty2.png"
+import Button from "react-bootstrap/Button";
 
 const gameChoice = () => {
     return (
