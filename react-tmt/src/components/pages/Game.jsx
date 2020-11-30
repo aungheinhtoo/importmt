@@ -48,7 +48,7 @@ const Game = (props) => {
     }, [end]);
 
     const gamebox = (
-        <div className="img-overlay-wrap" style={{paddingLeft: '175px'}}>
+        <div className="img-overlay-wrap" style={{paddingLeft: '150px'}}>
             <img src={background} alt="empty" width={width} height={height}/>
             <svg viewBox={`0 0 ${width} ${height}`}>
                 {nodes.map((node, i) => (
